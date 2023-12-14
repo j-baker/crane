@@ -47,7 +47,7 @@ let
   vendorSingleRegistry = packages: runCommandLocal "vendor-registry" { } ''
     mkdir -p $out
     ${concatMapStrings (p: ''
-      ln -s ${escapeShellArg (downloadCargoPackage p)} $out/${escapeShellArg "${p.name}-${p.version}"}
+      cp -r ${escapeShellArg (downloadCargoPackage p)} $out/${escapeShellArg "${p.name}-${p.version}"}
     '') packages}
   '';
 
