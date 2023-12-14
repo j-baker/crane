@@ -63,7 +63,7 @@ let
 
   linkSources = sources: concatMapStrings
     (name: ''
-      ln -s ${escapeShellArg sources.${name}} $out/${escapeShellArg name}
+      cp -r ${escapeShellArg sources.${name}} $out/${escapeShellArg name}
     '')
     (attrNames sources);
 in
